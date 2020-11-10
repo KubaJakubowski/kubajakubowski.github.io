@@ -16,13 +16,14 @@ await exec(`npm run deploy-build`)
 console.log(`Angular: `, `finished building docs`);
 
 await exec('git add .');
-await exec(`git commit -m "chore: deploy-${Date.now()}"`);
-await exec('git push');
+exec(`git commit -m "chore: deploy-${Date.now()}"`);
+exec('git push');
 console.log('Git: ', 'pushing build');
 
-await exec('git checkout main');
-console.log('Git: ', 'checked out to main branch');
-
+setTimeout(()=> {
+  exec('git checkout main');
+  console.log('Git: ', 'checked out to main branch');
+}, 1000)
 
 }
 
