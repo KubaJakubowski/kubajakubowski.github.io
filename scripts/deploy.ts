@@ -1,6 +1,7 @@
 const exec = require('await-exec')
 
-export{}
+
+async function deploy(){
 
 console.log('Depolying: ', `deploy-${Date.now()}`);
 
@@ -23,3 +24,6 @@ await exec('git checkout main');
 console.log('Git: ', 'checked out to main branch');
 
 
+}
+
+deploy()
