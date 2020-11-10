@@ -21,7 +21,7 @@ async function deploy(){
 
     setTimeout(()=>{
       console.log(`Git: `, `git commit`);
-      exec(`git commit -m 'chore: deploy'`);
+      exec(`git commit -m "chore: deploy"`);
 
       setTimeout(()=> {
         console.log('Git: ', 'pushing build');
