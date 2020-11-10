@@ -7,12 +7,8 @@ const routes: Routes = [
         path: '',
         component: MainComponent,
         children: [
-          {
-            path: '',
-            redirectTo: 'landing',
-        },
         {
-            path: 'landing',
+            path: '',
             loadChildren: () => import('./pages/landing/landing.module').then((m) => m.LandingModule),
         },
 
