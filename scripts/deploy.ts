@@ -16,19 +16,29 @@ async function deploy(){
   console.log(`Angular: `, `finished building docs`);
 
   setTimeout(()=> {
+    console.log(`Git: `, `git add`);
     exec('git add .');
-    exec(`git commit -m "chore: deploy-${Date.now()}"`);
+
+    setTimeout(()=>{
+      console.log(`Git: `, `git commit`);
+      exec(`git commit -m "chore: deploy-${Date.now()}"`);
+
+      setTimeout(()=> {
+        console.log('Git: ', 'pushing build');
+        exec('git push');
+
+        setTimeout(()=> {
+          console.log('Git: ', 'pushing build');
+          exec('git push');
+
+          setTimeout(()=> {
+            console.log('Git: ', 'checked out to main branch');
+            exec('git checkout main');
+          }, 1000)
+        }, 1000)
+      }, 1000)
+    }, 1000)
   }, 1000)
-
-  setTimeout(()=> {
-    exec('git push');
-    console.log('Git: ', 'pushing build');
-  })
-
-  setTimeout(()=> {
-    exec('git checkout main');
-    console.log('Git: ', 'checked out to main branch');
-  })
 
 }
 deploy()
