@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "postcss:build": "postcss src/styles.pcss -o src/tailwind.scss",
-  	"prestart": "npm run postcss:build",
-  	"prebuild": "npm run postcss:build -- --env=production",
+    "prestart": "npm run postcss:build",
+    "prebuild": "npm run postcss:build -- --env=production",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
