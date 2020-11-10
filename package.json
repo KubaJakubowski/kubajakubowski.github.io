@@ -11,7 +11,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "ng build --prod --base-href 'https://kubajakubowski.github.io/'"
+    "deploy-build": "ng build --prod --base-href 'https://kubajakubowski.github.io/'",
+    "deploy": "ts-node ./scripts/deploy.ts"
   },
   "private": true,
   "dependencies": {
