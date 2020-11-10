@@ -21,7 +21,7 @@ async function deploy(){
 
     setTimeout(()=>{
       console.log(`Git: `, `git commit`);
-      exec(`git commit -m "chore: deploy-${Date.now()}"`);
+      exec(`git commit -m 'chore: deploy-${Date.now().toString()}'`);
 
       setTimeout(()=> {
         console.log('Git: ', 'pushing build');
@@ -34,7 +34,7 @@ async function deploy(){
           setTimeout(()=> {
             console.log('Git: ', 'checked out to main branch');
             exec('git checkout main');
-          }, 1000)
+          }, 5000)
         }, 1000)
       }, 1000)
     }, 1000)
