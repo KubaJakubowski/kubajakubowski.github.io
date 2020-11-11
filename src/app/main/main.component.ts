@@ -8,10 +8,10 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
   animations: [
     trigger('toggleClick', [     // trigger block
       state('0', style({      // final CSS following animation
-        color: 'white',
+        color: '#f7fafc',
       })),
       state('1', style({
-        color: '#F87356'
+        color: '#f56565'
       })),
       state('2', style({
         color: '#56F873'
@@ -28,6 +28,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements AfterViewInit{
   state: number = 0;
+  showMenu: boolean = false;
 
   ngAfterViewInit(){
     setInterval(()=>{
@@ -43,6 +44,11 @@ export class MainComponent implements AfterViewInit{
     }
     this.state = 0;
 
+  }
+
+  toogleMenu(){
+    this.showMenu = !this.showMenu;
+    console.log(this.showMenu)
   }
 
 }
