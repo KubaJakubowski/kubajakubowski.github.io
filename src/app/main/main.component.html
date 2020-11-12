@@ -1,4 +1,4 @@
-<div class="h-screen flex flex-col bg-red-100">
+<div class="min-h-screen flex flex-col bg-gray-100">
   <nav
     class="sticky top-0 flex items-center justify-between flex-wrap bg-red-500 p-6 shadow-2xl"
   >
@@ -69,15 +69,15 @@
     </div>
   </div>
   -->
-    <div class="bg-gray-100 p-2"></div>
-    <div class="bg-gray-100 pt-2">
+    <div class="bg-gray-800 p-2"></div>
+    <div class="bg-gray-800 pt-2">
       <div
-        class="flex pb-5 px-3 m-auto pt-5 border-t text-gray-800 text-sm flex-col md:flex-row max-w-6xl"
+        class="flex pb-5 px-3 m-auto pt-5 border-t text-gray-100 text-sm flex-col md:flex-row max-w-6xl"
       >
         <div class="mt-2">© NoCopyright 2020. No Rights Reserved.</div>
-        <div class="md:flex-auto md:flex-row-reverse mt-2 flex-row flex">
-          <div class="flex items-center flex-shrink-0 text-black mr-6">
-            <div class="flex flex-wrap">
+        <div class="md:flex-auto md:flex-row-reverse mt-2 flex-row flex mx-auto">
+          <div class="items-center text-black mr-6 bg-gray-100 p-3 rounded leading-3 shadow-inner">
+            <div class="flex">
               <span class="font-semibold text-xl tracking-tight pr-1"
                 >Github.</span
               >
@@ -86,8 +86,10 @@
                 [@toggleClick]="state"
                 >IO</span
               >
+            </div>
+            <div class="text-right">
               <span
-                class="w-4/6 font-semibold text-xs tracking-tight text-right"
+                class="w-4/6 font-semibold text-xs tracking-tight"
                 [@toggleClick]="state"
                 >powers it</span
               >
