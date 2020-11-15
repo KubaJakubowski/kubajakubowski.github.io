@@ -35,6 +35,9 @@ jobs:
           command: git checkout deploy;
       - run:
           name: Build angular dist
+          command: npm i;
+      - run:
+          name: Build angular dist
           command: npm run deploy-build;
       - run:
           name: Commit builded package
