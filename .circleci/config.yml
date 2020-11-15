@@ -25,6 +25,8 @@ jobs:
       enabled: true
     steps:
       - checkout
+      - run: git submodule sync
+      - run: git submodule update --init
       - run:
           name: Push changes to another branch
           command: git push origin master:deploy;
@@ -46,6 +48,5 @@ workflows:
   build-and-deploy:
     jobs:
       - build
-      - deploy:
-          requires:
-            - build
+      - deploy
+
