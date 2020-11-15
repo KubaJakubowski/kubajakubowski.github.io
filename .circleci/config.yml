@@ -58,6 +58,5 @@ workflows:
     jobs:
       - build
       - deploy:
-          version: 14.7.0
           requires:
             - build
