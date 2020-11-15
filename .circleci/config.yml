@@ -15,7 +15,7 @@ jobs:
           command: npm install
       - run:
           name: Install angular cli
-          command: npm i -g @angular/cli;
+          command: sudo npm i -g @angular/cli;
       - save_cache:
           key: dependency-cache-{{checksum "package-lock.json"}}
           paths:
