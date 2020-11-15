@@ -1,11 +1,51 @@
-version: 2.1
+version: 2.17
 jobs:
   build:
     docker:
-      - image: cimg/node:14.10.1 # the primary container, where your job's commands are run
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+      - image: circleci/node:14.7.0
     steps:
-      - checkout # check out the code in the project directory
-      - run: echo "hello world" # run the `echo` command
+      - checkout
+      - run:
+          name: update-npm
+          command: 'sudo npm install -g npm@latest'
+      - restore_cache:
+          key: dependency-cache-{{checksum "package-lock.json"}}
+      - run:
+          name: install-npm
+          command: npm install
+      - run:
+          name: Install angular cli
+          command: npm i -g @angular/cli;
+      - save_cache:
+          key: dependency-cache-{{checksum "package-lock.json"}}
+          paths:
+            - ./node_modules
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - checkout
+      - run:
+          name: Push changes to another branch
+          command: git push origin master:deploy;
+      - run:
+          name: Checkout to deploy branch
+          command: git checkout deploy;
+      - run:
+          name: Build angular dist
+          command: ng build --prod --base-href https://kubajakubowski.github.io/;
+      - run:
+          name: Commit builded package
+          command: "git add . && git commit -m 'chore: deploy'";
+      - run:
+          name: Push the changes
+          commang: git push;
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
