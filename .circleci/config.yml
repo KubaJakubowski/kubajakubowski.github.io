@@ -29,7 +29,7 @@ jobs:
       - run: git submodule update --init
       - run:
           name: Push changes to another branch
-          command: git push origin main:deploy;
+          command: git push -f origin main:deploy;
       - run:
           name: Checkout to deploy branch
           command: git checkout deploy;
