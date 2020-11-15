@@ -31,9 +31,6 @@ jobs:
       - run: git submodule sync
       - run: git submodule update --init
       - run:
-          name: Switch node version
-          command: nvm use v14.7.0 && nvm alias default v14.7.0
-      - run:
           name: Push changes to another branch
           command: git push -f origin main:deploy;
       - run:
