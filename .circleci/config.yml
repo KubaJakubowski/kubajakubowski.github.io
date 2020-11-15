@@ -9,6 +9,9 @@ jobs:
           name: set variables
           command: echo 'export NG_CLI_ANALYTICS="ci"' >> $BASH_ENV;
       - run:
+          name: get variables
+          command: echo $NG_CLI_ANALYTICS;
+      - run:
           name: update-npm
           command: 'sudo npm install -g npm@latest'
       - restore_cache:
