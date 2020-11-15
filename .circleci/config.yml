@@ -6,12 +6,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: set variables
-          command: echo 'export NG_CLI_ANALYTICS="ci"' >> $BASH_ENV;
-      - run:
-          name: get variables
-          command: echo $NG_CLI_ANALYTICS;
-      - run:
           name: update-npm
           command: 'sudo npm install -g npm@latest'
       - restore_cache:
@@ -20,8 +14,8 @@ jobs:
           name: install-npm
           command: npm install
       - run:
-          name: Install angular cli
-          command: sudo npm i -g @angular/cli;
+          name: update-npm
+          command: 'sudo npm install -g @angular/cli > /dev/null'
       - save_cache:
           key: dependency-cache-{{checksum "package-lock.json"}}
           paths:
