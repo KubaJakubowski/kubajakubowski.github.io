@@ -35,7 +35,7 @@ jobs:
           command: git checkout deploy;
       - run:
           name: Build angular dist
-          command: ng build --prod --base-href https://kubajakubowski.github.io/;
+          command: npm run deploy-build;
       - run:
           name: Commit builded package
           command: git add .;
