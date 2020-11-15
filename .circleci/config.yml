@@ -38,7 +38,10 @@ jobs:
           command: ng build --prod --base-href https://kubajakubowski.github.io/;
       - run:
           name: Commit builded package
-          command:"git add . && git commit -m 'chore: deploy'";
+          command: git add .;
+      - run:
+          name: Commit
+          command: git commit -m 'chore deploy';
       - run:
           name: Push the changes
           command: git push;
@@ -48,5 +51,6 @@ workflows:
   build-and-deploy:
     jobs:
       - build
-      - deploy
-
+      - deploy:
+          requires:
+            - build
