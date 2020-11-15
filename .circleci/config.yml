@@ -2,19 +2,19 @@ version: 2.17
 jobs:
   build:
     docker:
-      - image: circleci/node:lts
+      - image: circleci/node:14.7.0
     steps:
       - checkout
       - run:
-          name: update-npm
+          name: Update node package manager
           command: 'sudo npm install -g npm@latest'
       - restore_cache:
           key: dependency-cache-{{checksum "package-lock.json"}}
       - run:
-          name: install-npm
+          name: Install packages
           command: npm install
       - run:
-          name: update-npm
+          name: Install angular cli globally
           command: 'sudo npm install -g @angular/cli > /dev/null'
       - save_cache:
           key: dependency-cache-{{checksum "package-lock.json"}}
@@ -28,13 +28,16 @@ jobs:
       - run: git submodule sync
       - run: git submodule update --init
       - run:
+          name: Switch node version
+          command: nvm use v14.7.0 && nvm alias default v14.7.0
+      - run:
           name: Push changes to another branch
           command: git push -f origin main:deploy;
       - run:
           name: Checkout to deploy branch
           command: git checkout deploy;
       - run:
-          name: Build angular dist
+          name: Run additional dependency installation
           command: npm i;
       - run:
           name: Build angular dist
